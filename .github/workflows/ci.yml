@@ -23,7 +23,7 @@ jobs:
         run: mvn clean package
 
       - name: Upload JAR artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: inventory-jar
           path: target/inventory-service-1.0.0.jar
