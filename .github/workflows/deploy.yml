@@ -7,8 +7,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    outputs:
-      artifact-name: inventory-jar
     steps:
       - uses: actions/checkout@v3
       - name: Set up JDK 17
@@ -26,7 +24,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: build     # waits for build job to finish
+    needs: build
     steps:
       - name: Download JAR artifact
         uses: actions/download-artifact@v4
@@ -41,7 +39,7 @@ jobs:
           username: ubuntu
           key: ${{ secrets.EC2_SSH_KEY }}
           source: ./target/inventory-service-1.0.0.jar
-          target: /home/ubuntu/inventory-application/target/inventory-service-1.0.0.jar
+          target: /home/ubuntu/inventory-application/target/
 
       - name: Restart service on EC2
         uses: appleboy/ssh-action@v0.1.7
