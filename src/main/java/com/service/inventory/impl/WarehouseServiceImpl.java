@@ -38,7 +38,7 @@ public class WarehouseServiceImpl implements WarehouseService {
         Warehouse warehouse = warehouseMapper.toEntity(warehouseDto);
         warehouse = warehouseRepository.save(warehouse);
 
-        log.info("Warehouse created successfully with ID: {}", warehouse.getId());
+        log.info("Warehouse successfully created with ID: {}", warehouse.getId());
         return warehouseMapper.toDto(warehouse);
     }
 
